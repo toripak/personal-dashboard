@@ -8,29 +8,36 @@ const time = document.querySelector('.greeting--time');
 const quoteEl = document.querySelector('.quote');
 const authorEl = document.querySelector('.quote--author');
 const weatherIcon = document.querySelector('.weather--icon');
+const weatherError = document.getElementById('weather--error');
 
 //------- Twitter timeline widget -------
 const twitterEl = document.querySelector('.twitter-timeline');
 twitterEl.href = 'https://twitter.com/tor1_pak/lists/1514681290578092041?ref_src=twsrc%5Etfw';
 
+//--- Get content (weather, quote) functions ---
 const getWeatherData = () => {
   navigator.geolocation.getCurrentPosition(async position => {
     try {
       const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=139fd68b2e5cfae5f582200699c19e3f`);
-      if (!res.ok) {
-        throw new Error('<div>Location data N/A. Please allow access to your location to show the weather data.</div>');
+      if (!res.ok || !res) {
+        throw Error('Please try again later.')
       }
       const jsonRes = await res.json();
       weather.textContent = `${Math.round(jsonRes.main.temp)}º`;
       city.textContent = jsonRes.name;
 
       // setting weather icon
+      console.log(iconUrl)
       const iconUrl = `http://openweathermap.org/img/wn/${jsonRes.weather[0].icon}@2x.png`;
       weatherIcon.src = iconUrl;
     }
     catch (error) {
-      weather.textContent = `${error.message}`;
+      console.log(error.message);
+      weatherError.textContent = `${error.message}`;
     }
+  }, (navigatorError) => {
+    console.log(navigatorError.message);
+    weatherError.textContent = 'Location data N/A. Please allow access to your location to show the weather data.';
   })
 }
 
