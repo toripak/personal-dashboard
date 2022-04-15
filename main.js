@@ -27,7 +27,6 @@ const getWeatherData = () => {
       city.textContent = jsonRes.name;
 
       // setting weather icon
-      console.log(iconUrl)
       const iconUrl = `http://openweathermap.org/img/wn/${jsonRes.weather[0].icon}@2x.png`;
       weatherIcon.src = iconUrl;
     }
