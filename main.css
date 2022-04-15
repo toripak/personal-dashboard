@@ -2,3 +2,20 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: white;
+  text-shadow: #888 3px 0 17px;
+}
+
+.weather--icon {
+  max-height: 35px;
+}
+
+.twitter-timeline {
+  opacity: .9;
+}
