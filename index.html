@@ -9,16 +9,35 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="./main.css">
   <title>Personal dashboard</title>
-  <script src="./main.js" async></script>
 </head>
 
 <body>
   <main>
-    <div id="weather" class="weather"></div>
-    <div id="date" class="date"></div>
-    <div id="time" class="time"></div>
-    <div id="quote" class="quote"></div>
+    <div class="d-none d-md-block position-fixed position-relative m-3 top-0 end-0">
+      <a class="twitter-timeline" data-width="210" data-height="300" data-theme="light" href="">A Twitter List by
+        tor1_pak</a>
+    </div>
+    <div class="container d-flex py-3 flex-column justify-content-between min-vh-100">
+      <div class="weather--container">
+        <img class="weather--icon" src="" alt="weather-icon">
+        <div class="weather fs-3 fw-bold"></div>
+        <div class="weather--city"></div>
+      </div>
+      <div class="greeting align-self-center">
+        <div class="greeting--date fw-bold fs-2"></div>
+        <div class="greeting--time text-center fw-bolder display-1"></div>
+        <p class="text-center fs-6 fst-italic">Don't forget to enjoy your day!</p>
+        <div></div>
+      </div>
+      <div class="align-self-center text-center">
+        <div class="quote fs-5"></div>
+        <span class="quote--author fs-6 fst-italic"></span>
+      </div>
+    </div>
+
   </main>
+  <script async src="./main.js"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </body>
 
